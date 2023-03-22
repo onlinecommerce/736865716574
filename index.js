@@ -6,7 +6,7 @@ app.use(express.json());
 app.use("/home", (req, res, next) => {
 	res.status(200).json({
 		status: "success",
-		message: "This works fine"
+		message: "This works just fine"
 	})
 });
 
