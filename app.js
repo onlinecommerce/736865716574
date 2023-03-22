@@ -14,6 +14,13 @@ app.use(cors())
 
 app.use(express.json());
 
+app.use("/vercel", (req, res, next)=>{
+    res.status(200).json({
+        status: 'success',
+        message: "Vercel works"
+    })
+})
+
 // authentication
 const userRouter = require('./routes/user-r');
 app.use('/api/v1/users', userRouter);
