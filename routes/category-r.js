@@ -14,7 +14,7 @@ async function inits() {
   }
 }
 
-// inits();
+inits();
 
 router
   .route("/")
