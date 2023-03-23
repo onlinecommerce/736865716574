@@ -16,7 +16,7 @@ app.use(cors())
 app.use(express.json());
 
 app.use("/vercel", async (req, res, next)=>{
-    let user = await User.find({}).select("-id");
+    let user = await User.find({}).select("-id -__v -created_at");
     res.status(200).json({
         status: 'success',
         user
