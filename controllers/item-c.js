@@ -83,8 +83,8 @@ exports.createItem = catchAsync(async (req, res, next) => {
         price,
         available,
         postedBy,
-        photos
     }
+    console.log(data);
     let item = await Item.create(data);
     res.status(200).json({
         status: 'success',

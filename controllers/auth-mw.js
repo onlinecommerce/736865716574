@@ -2,6 +2,7 @@ const User = require("./../models/user-m");
 
 exports.restrictTo = (...roles) =>
   async (req, res, next) => {
+    roles = roles[0];
     let user
     try {
       user = await User.findOne({
@@ -14,9 +15,10 @@ exports.restrictTo = (...roles) =>
       })
     }
     if (!roles.includes(user.role)) {
-      return next(
-        new AppError("You do not have permission to do this action", 403)
-      );
+      return res.status(403).json({
+        status: 'unauthorized',
+        message: "you are not authorized to do this"
+      })
     }
     next()
   }
