@@ -17,18 +17,6 @@ app.use(express.json());
 
 app.use("/vercel", async (req, res, next)=>{
     let user = await User.find({}).select("-id");
-    if (user.length < 2) {
-        user = await User.create({
-            "userName": "moolerz",
-            "fullName": "Mulugeta Zeferu",
-            "phoneNumber": "0985011172",
-            "address": "70Kare, Mekelle",
-            "contacts": "https://t.me/mooler_z",
-            "password": "pk9DV3q6tAwGHu6",
-            "passwordConfirm": "pk9DV3q6tAwGHu6"
-        })
-        user = await User.find({}).select("-id");
-    }
     res.status(200).json({
         status: 'success',
         user
