@@ -117,7 +117,7 @@ exports.checkToken = catchAsync(async (req, res, next) => {
     );
   }
 
-  let decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+  let decoded = await promisify(jwt.verify)(token, JWT_SECRET);
 
   res.status(200).json({
     status: 'success',
@@ -127,7 +127,7 @@ exports.checkToken = catchAsync(async (req, res, next) => {
 });
 
 exports.guard = catchAsync(async (req, res, next) => {
-  const decodedToken = jwt.verify(req.headers.authorization.split(" ")[1], process.env.JWT_SECRET);
+  const decodedToken = jwt.verify(req.headers.authorization.split(" ")[1], JWT_SECRET);
   req.query.id = decodedToken.id;
 
   let token;
@@ -144,7 +144,7 @@ exports.guard = catchAsync(async (req, res, next) => {
     );
   }
 
-  let decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+  let decoded = await promisify(jwt.verify)(token, JWT_SECRET);
 
   next();
 });
