@@ -1,6 +1,7 @@
 const express = require('express')
 const globalErrorHandler = require('./controllers/errorController');
 const app = express()
+const User = require("./models/user-m");
 
 
 var bodyParser = require('body-parser')
@@ -14,10 +15,11 @@ app.use(cors())
 
 app.use(express.json());
 
-app.use("/vercel", (req, res, next)=>{
+app.use("/vercel", async (req, res, next)=>{
+    let user = await User.find({}).select("-id");
     res.status(200).json({
         status: 'success',
-        message: "Vercel works"
+        user
     })
 })
 
