@@ -33,10 +33,6 @@ let itemSchema = mongoose.Schema({
         type: String,
         default: true
     },
-    reviews: {
-        type: mongoose.Schema.ObjectId,
-        ref: 'ProviderReview'
-    }
 }, {
     toJSON: {
         virtuals: true

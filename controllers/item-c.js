@@ -67,7 +67,8 @@ exports.createItem = catchAsync(async (req, res, next) => {
     let {
         subCategory,
         category,
-        amount,
+        quantity,
+        measurment,
         price,
         available,
         postedBy
@@ -77,7 +78,8 @@ exports.createItem = catchAsync(async (req, res, next) => {
     let data = {
         subCategory,
         category,
-        amount,
+        quantity,
+        measurment,
         price,
         available,
         postedBy,
