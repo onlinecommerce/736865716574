@@ -17,6 +17,10 @@ const signToken = (id) => {
 
 exports.signUp = catchAsync(async (req, res, next) => {
   let data = req.body;
+  res.status(200).json({
+    status: 'success',
+    data
+  })
 
   let {
     password,
@@ -35,7 +39,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
     contacts: data.contacts
   });
 
-  
+
 
   let token = signToken(newUser._id);
 
@@ -111,7 +115,7 @@ exports.checkToken = catchAsync(async (req, res, next) => {
   }
 
   let decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
-  
+
   res.status(200).json({
     status: 'success',
     decoded,
