@@ -23,6 +23,11 @@ exports.signUp = catchAsync(async (req, res, next) => {
     passwordConfirm
   } = data;
 
+  res.status(200).json({
+    status: "success",
+    // token,
+    user: data,
+  });
 
   let userName = data.userName ? data.userName.toLowerCase() : data.userName;
   const newUser = await User.create({
@@ -36,11 +41,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
     contacts: data.contacts
   });
 
-  res.status(200).json({
-    status: "success",
-    // token,
-    user: newUser,
-  });
+  
 
   let token = signToken(newUser._id);
 
