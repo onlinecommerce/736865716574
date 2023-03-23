@@ -80,12 +80,6 @@ exports.logIn = catchAsync(async (req, res, next) => {
     await user.correctPassword(password, user.password) :
     false;
 
-  res.status(200).json({
-    status: "success",
-    // token,
-    user,
-  });
-
   if (!user || !correct) {
     return res.status(404).json({
       status: 'noAccount',
@@ -93,7 +87,7 @@ exports.logIn = catchAsync(async (req, res, next) => {
     })
   }
 
-  // const token = signToken(user._id);
+  const token = signToken(user._id);
   res.status(200).json({
     status: "success",
     token,
