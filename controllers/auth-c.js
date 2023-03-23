@@ -68,11 +68,6 @@ exports.logIn = catchAsync(async (req, res, next) => {
   }).select(
     "+password"
   );
-  res.status(200).json({
-    status: "success",
-    // token,
-    user,
-  });
 
   /* if (user && user.banned) {
     return res.status(401).json({
@@ -84,6 +79,12 @@ exports.logIn = catchAsync(async (req, res, next) => {
   const correct = user ?
     await user.correctPassword(password, user.password) :
     false;
+
+  res.status(200).json({
+    status: "success",
+    // token,
+    user,
+  });
 
   if (!user || !correct) {
     return res.status(404).json({
