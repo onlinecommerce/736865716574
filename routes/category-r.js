@@ -18,7 +18,7 @@ async function inits() {
 
 router
   .route("/")
-  .get(authController.guard, cateController.getCategory)
+  .get(cateController.getCategory)
   .post(authController.guard, authMW.restrictTo(['admin']), cateController.saveCategory)
   .patch(authController.guard, authMW.restrictTo(['admin']), cateController.editCategory)
   .delete(authController.guard, authMW.restrictTo(['admin']), cateController.delCategory);
