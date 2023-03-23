@@ -51,11 +51,6 @@ exports.logIn = catchAsync(async (req, res, next) => {
     password
   } = req.query;
 
-  res.status(200).json({
-    status: "success",
-    data: req.query
-  })
-
   if (!userName || !password) {
     return res.status(404).json({
       status: 'nullField',
@@ -86,6 +81,11 @@ exports.logIn = catchAsync(async (req, res, next) => {
       message: 'Incorrect Username or Password'
     })
   }
+
+  res.status(200).json({
+    status: "success",
+    data: req.query
+  })
 
   const token = signToken(user._id);
   res.status(200).json({
