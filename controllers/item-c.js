@@ -64,26 +64,22 @@ exports.searchItems = catchAsync(async (req, res, next) => {
 })
 
 exports.createItem = catchAsync(async (req, res, next) => {
-    let photos;
-    if (req.body.photos) photos = req.body.photos.map(item => 'storage/items/' + item);
     let {
-        title,
         subCategory,
         category,
         amount,
         price,
-        status,
+        available,
         postedBy
     } = req.body;
     postedBy = postedBy || req.query.id;
 
     let data = {
-        title,
         subCategory,
         category,
         amount,
         price,
-        status,
+        available,
         postedBy,
         photos
     }
