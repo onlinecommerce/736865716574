@@ -26,7 +26,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
 
   let userName = data.userName ? data.userName.toLowerCase() : data.userName;
   const newUser = await User.create({
-    name: data.name,
+    fullName: data.fullName,
     userName: userName,
     phoneNumber: data.phoneNumber,
     password,
