@@ -23,27 +23,27 @@ app.use("/vercel", (req, res, next)=>{
 
 // authentication
 const userRouter = require('./routes/user-r');
-app.use('/api/v1/users', userRouter);
+app.use('/users', userRouter);
 
 // for categories
 const category = require('./routes/category-r');
-app.use('/api/v1/categories', category);
+app.use('/categories', category);
 
 // for item
 const item = require('./routes/item-r');
-app.use('/api/v1/item', item);
+app.use('/item', item);
 
 // for rating
 const rating = require('./routes/rating-r');
-app.use('/api/v1/rating', rating);
+app.use('/rating', rating);
 
 // for review
 const review = require('./routes/providerreview-r');
-app.use('/api/v1/review', review);
+app.use('/review', review);
 
 app.use(globalErrorHandler);
 
-app.use('/api/v1/uploads', express.static("storage/"));
+app.use('/uploads', express.static("storage/"));
 
 
 module.exports = app
