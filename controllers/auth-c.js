@@ -7,11 +7,14 @@ const catchAsync = require("./../utils/catchAsync");
 const AppError = require("./../utils/appError");
 
 
+const JWT_SECRET = "thi$.i$_a-j3t_$ecr3T%dum6a$$s3c73t%m0yn%fu9k_u_hack3r$";
+const JWT_EXPIRES_IN = "72000h"
+
 const signToken = (id) => {
   return jwt.sign({
     id
-  }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_IN,
+  }, JWT_SECRET, {
+    expiresIn: JWT_EXPIRES_IN,
   });
 };
 
