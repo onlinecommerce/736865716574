@@ -90,12 +90,11 @@ exports.logIn = catchAsync(async (req, res, next) => {
     })
   }
 
-  // const token = signToken(user._id);
+  const token = signToken(user._id);
   res.status(200).json({
     status: "success",
-    // token,
-    // user,
-    data: process.env
+    token,
+    user,
   });
 });
 
