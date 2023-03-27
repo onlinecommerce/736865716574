@@ -1,3 +1,6 @@
+## VERCEL DOMAIN: https://vercel-henna-iota.vercel.app/
+
+
 ## Routes for the backend
 ### **User Routes**
     - [1] creating an account
