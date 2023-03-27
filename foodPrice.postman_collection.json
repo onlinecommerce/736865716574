@@ -1,0 +1,387 @@
+{
+	"info": {
+		"_postman_id": "09226be9-f508-4f3c-8530-f83da5c46a71",
+		"name": "foodPrice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "createUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"userName\": \"delete\",\n        \"fullName\": \"Delete Me\",\n        \"phoneNumber\": \"911\",\n        \"address\": \"70Kare, Mekelle\",\n        \"contacts\": \"https://t.me/www\",\n        \"password\": \"123456789\",\n        \"passwordConfirm\": \"123456789\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}user/signup",
+							"host": [
+								"{{URL}}user"
+							],
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}user/login?userName=mooler_z&password=123456789",
+							"host": [
+								"{{URL}}user"
+							],
+							"path": [
+								"login"
+							],
+							"query": [
+								{
+									"key": "userName",
+									"value": "mooler_z"
+								},
+								{
+									"key": "password",
+									"value": "123456789"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUser",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWVlMTI1ZWMxNjUyNDE4YzI3ODkyZiIsImlhdCI6MTY3OTc0NTMyNiwiZXhwIjoxOTM4OTQ1MzI2fQ.8hIUciaQm-Wjsm9JBn0f7nQysEMtGQ8EkMzbhcS9Ezk",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userName\": \"mooler_z\",\n    \"fullName\": \"Mulugeta Zeferu Updated\",\n    \"phoneNumber\": \"0985011172\",\n    \"address\": \"70Kare, Mekelle\",\n    \"contacts\": \"@mooler_z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}user/update?password=pk9DV3q6tAwGHu6",
+							"host": [
+								"{{URL}}user"
+							],
+							"path": [
+								"update"
+							],
+							"query": [
+								{
+									"key": "password",
+									"value": "pk9DV3q6tAwGHu6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "changeRole",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWVlMTI1ZWMxNjUyNDE4YzI3ODkyZiIsImlhdCI6MTY3OTc0NjE0NywiZXhwIjoxOTM4OTQ2MTQ3fQ.Dj8qHA3Gn8wPtWuJqIo1L2WV7_S75Q4ram1atn4JEsk",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}user/role?role=provider&user_id=641ee2bb0f285158deefbd88",
+							"host": [
+								"{{URL}}user"
+							],
+							"path": [
+								"role"
+							],
+							"query": [
+								{
+									"key": "role",
+									"value": "provider"
+								},
+								{
+									"key": "user_id",
+									"value": "641ee2bb0f285158deefbd88"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePassword",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWVlMTI1ZWMxNjUyNDE4YzI3ODkyZiIsImlhdCI6MTY3OTc0NjE0NywiZXhwIjoxOTM4OTQ2MTQ3fQ.Dj8qHA3Gn8wPtWuJqIo1L2WV7_S75Q4ram1atn4JEsk",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"oldPassword\": \"pk9DV3q6tAwGHu6\",\n    \"newPassword\": \"123456789\",\n    \"newPasswordConfirm\": \"123456789\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}user/update-password",
+							"host": [
+								"{{URL}}user"
+							],
+							"path": [
+								"update-password"
+							],
+							"query": [
+								{
+									"key": "oldPassword",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWVlMTI1ZWMxNjUyNDE4YzI3ODkyZiIsImlhdCI6MTY3OTc0NjQzNiwiZXhwIjoxOTM4OTQ2NDM2fQ.USGyuhvkWUEkHqqSxMDDdmkD9jcjvnj42gEVYasdxoU",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}user/delete?user_id=641ee69d4f688b6f615fcbba",
+							"host": [
+								"{{URL}}user"
+							],
+							"path": [
+								"delete"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "641ee69d4f688b6f615fcbba"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "categories",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWJlZTY0ZmU0ZWRiNDMwOTg4YTg1NiIsImlhdCI6MTY3OTU2MDA1MywiZXhwIjoxOTM4NzYwMDUzfQ.yNPCJt4e6RZJP3yCDZiC195QvGyKQfQ_sdhCGUbyzHA",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{URL}}category",
+							"host": [
+								"{{URL}}category"
+							],
+							"query": [
+								{
+									"key": "distinct",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Fruits",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createCategory",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWVlMTI1ZWMxNjUyNDE4YzI3ODkyZiIsImlhdCI6MTY3OTg0NjM4OCwiZXhwIjoxOTM5MDQ2Mzg4fQ.pSu8tovrv0y-9bkT91PHtz_8SMx7p8nobQVpHo8u3r8",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"category\": \"Packaged\",\n    \"subcategory\": [\"Biscuit\", \"Candy\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}category",
+							"host": [
+								"{{URL}}category"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "item",
+			"item": [
+				{
+					"name": "createItem",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWVlMTI1ZWMxNjUyNDE4YzI3ODkyZiIsImlhdCI6MTY3OTg0NjM4OCwiZXhwIjoxOTM5MDQ2Mzg4fQ.pSu8tovrv0y-9bkT91PHtz_8SMx7p8nobQVpHo8u3r8",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"category\": \"Ingredients\",\n    \"subCategory\": \"Shiro\",\n    \"description\": \"From Adigrat\",\n    \"measurment\": 1,\n    \"price\": 460,\n    \"postedBy\": \"641bee64fe4edb430988a856\",\n    \"available\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}item",
+							"host": [
+								"{{URL}}item"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getItems",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}item",
+							"host": [
+								"{{URL}}item"
+							],
+							"query": [
+								{
+									"key": "_id",
+									"value": "64206d8794ea2152818208ee",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Ingredients",
+									"disabled": true
+								},
+								{
+									"key": "subCategory",
+									"value": "Shiro",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}item/search?search=shi",
+							"host": [
+								"{{URL}}item"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "shi"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWVlMTI1ZWMxNjUyNDE4YzI3ODkyZiIsImlhdCI6MTY3OTg0NjM4OCwiZXhwIjoxOTM5MDQ2Mzg4fQ.pSu8tovrv0y-9bkT91PHtz_8SMx7p8nobQVpHo8u3r8",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}item?itemId=64206d8794ea2152818208ee",
+							"host": [
+								"{{URL}}item"
+							],
+							"query": [
+								{
+									"key": "itemId",
+									"value": "64206d8794ea2152818208ee"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

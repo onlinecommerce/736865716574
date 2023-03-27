@@ -1,3 +1,4 @@
+const ApiFeatures = require("../utils/APIFeatures");
 const catchAsync = require("./../utils/catchAsync");
 const Category = require("./../models/category-m");
 
@@ -6,11 +7,12 @@ exports.getCategory = catchAsync(async (req, res, next) => {
   if (req.query.distinct) {
     category = await Category.find().distinct("category");
   } else if (req.query.category && !req.query.subcategory) {
-    category = await Category.findOne({ category: req.query.category }).sort({
+    const feature = new ApiFeatures(Category.find(), req.query).filter();
+    category = await feature.query;
+  } else {
+    category = await Category.find().sort({
       order: 1,
     });
-  } else {
-    category = await Category.find().sort({ order: 1 });
   }
 
   res.status(200).json({
@@ -22,7 +24,9 @@ exports.getCategory = catchAsync(async (req, res, next) => {
 exports.saveCategory = catchAsync(async (req, res, next) => {
   let category = await Category.create(req.body);
 
-  category = await Category.find().sort({ order: 1 });
+  category = await Category.find().sort({
+    order: 1,
+  });
 
   res.status(200).json({
     status: "success",
@@ -32,11 +36,17 @@ exports.saveCategory = catchAsync(async (req, res, next) => {
 
 exports.editCategory = catchAsync(async (req, res, next) => {
   let category = await Category.updateOne(
-    { _id: req.body._id },
-    { ...req.body }
+    {
+      _id: req.body._id,
+    },
+    {
+      ...req.body,
+    }
   );
 
-  category = await Category.find().sort({ order: 1 });
+  category = await Category.find().sort({
+    order: 1,
+  });
 
   res.status(200).json({
     status: "success",
@@ -45,9 +55,13 @@ exports.editCategory = catchAsync(async (req, res, next) => {
 });
 
 exports.delCategory = catchAsync(async (req, res, next) => {
-  let category = await Category.deleteOne({ _id: req.body._id });
+  let category = await Category.deleteOne({
+    _id: req.body._id,
+  });
 
-  category = await Category.find().sort({ order: 1 });
+  category = await Category.find().sort({
+    order: 1,
+  });
 
   res.status(200).json({
     status: "success",

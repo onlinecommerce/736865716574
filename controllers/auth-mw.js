@@ -8,6 +8,7 @@ exports.restrictTo = (...roles) =>
       user = await User.findOne({
         _id: req.query.id
       });
+      console.log(user.role);
     } catch (err) {
       return res.status(401).json({
         status: 'fail',

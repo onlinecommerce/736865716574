@@ -67,14 +67,9 @@ exports.updateUser = catchAsync(async (req, res, next) => {
         })
     }
 
-    let userName = req.body.userName ? req.body.userName.toLowerCase() : req.body.userName;
-
     let data = {
         fullName: req.body.fullName,
-        userName: userName,
         phoneNumber: req.body.phoneNumber,
-        password,
-        role: usr.role,
         address: req.body.address,
     }
 

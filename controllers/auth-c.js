@@ -21,6 +21,14 @@ const signToken = (id) => {
 exports.signUp = catchAsync(async (req, res, next) => {
   let data = req.body;
 
+  let exists = await User.findOne({ userName: data.userName.toLowerCase() })
+  if (exists) {
+    return res.status(401).json({
+      status: 'failed',
+      message: 'username already taken'
+    })
+  }
+
   let {
     password,
     passwordConfirm
@@ -33,7 +41,6 @@ exports.signUp = catchAsync(async (req, res, next) => {
     phoneNumber: data.phoneNumber,
     password,
     passwordConfirm,
-    role: data.role,
     address: data.address,
     contacts: data.contacts
   });
@@ -123,6 +130,12 @@ exports.checkToken = catchAsync(async (req, res, next) => {
 });
 
 exports.guard = catchAsync(async (req, res, next) => {
+  if (!req.headers.authorization) {
+    return res.status(400).json({
+      status: "failed",
+      message: "No token was found"
+    })
+  }
   const decodedToken = jwt.verify(req.headers.authorization.split(" ")[1], JWT_SECRET);
   req.query.id = decodedToken.id;
 

@@ -33,7 +33,7 @@ const sendErrorDev = (err, req, res) => {
     });
   }
 
-  return res.status(err.statusCode).render("error", {
+  return res.status(err.statusCode).json({
     title: "Something went wrong!",
     message: err.message,
   });
@@ -55,13 +55,13 @@ const sendErrorProd = (err, req, res) => {
   }
 
   if (err.isOperational) {
-    return res.status(err.statusCode).render("error", {
+    return res.status(err.statusCode).json({
       title: "Something went wrong!",
       message: err.message,
     });
   }
-  
-  return res.status(err.statusCode).render("error", {
+
+  return res.status(err.statusCode).json({
     title: "Something went wrong!",
     message: "Please Try again later.",
   });

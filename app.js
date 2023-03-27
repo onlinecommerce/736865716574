@@ -15,21 +15,13 @@ app.use(cors())
 
 app.use(express.json());
 
-app.use("/vercel", async (req, res, next)=>{
-    let user = await User.find({}).select("-id -__v -created_at");
-    res.status(200).json({
-        status: 'success',
-        user
-    })
-})
-
 // authentication
 const userRouter = require('./routes/user-r');
-app.use('/users', userRouter);
+app.use('/user', userRouter);
 
 // for categories
 const category = require('./routes/category-r');
-app.use('/categories', category);
+app.use('/category', category);
 
 // for item
 const item = require('./routes/item-r');

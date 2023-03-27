@@ -1,1 +1,85 @@
 ## Routes for the backend
+### **User Routes**
+    - [1] creating an account
+        - IPP/user/signup [POST]
+        - ROLE: ALL
+    - --------------------------------------------------------------
+    - [2] logging in
+        - IPP/user/login [POST]
+        - QUERY:
+          - userName: user_name
+          - password: password123
+        - ROLE: ALL if exists
+    - --------------------------------------------------------------
+    - [3] Update User
+        - IPP/user/update [PATCH]
+        - QUERY:
+          - password: password123 (for security reasons)
+        - **Authorization** request header (for logged in user):
+          - Bearer <TOKEN>
+        - ROLE: ALL if exists and loggedin already
+    - --------------------------------------------------------------
+    - [4] Update password
+        - IPP/user/update-password [PATCH]
+        - DATA-RAW (not form-data):
+          - oldPassword: 123456789
+          - newPassword: 123456789s
+          - newPasswordConfirm: 123456789s
+        - **Authorization** request header (for logged in user):
+          - Bearer <TOKEN>
+        - ROLE: ALL if exists and loggedin already
+    - --------------------------------------------------------------
+    - [5] Change Role
+        - IPP/user/role [PATCH]
+        - QUERY:
+          - user_id: ID_FOR_THE_USER_TO_BE_CHANGED
+          - role: provider
+        - **Authorization** request header (for logged in user):
+          - Bearer <TOKEN>
+        - ROLE: admin only
+    - --------------------------------------------------------------
+    - [6] Delete user
+        - IPP/user/delete-user
+        - QUERY:
+          - user_id: ID_FOR_THE_USER_TO_BE_DELETED
+        - **Authorization** request header (for logged in user):
+            - Bearer <TOKEN>
+        - ROLE: admin only
+    - --------------------------------------------------------------
+    - [7] Search User
+        - IPP/user/search [GET]
+        - QUERY:
+          - userName: user_name
+        - ROLE: ALL
+
+### **Item Routes**
+    - [1] Create Item
+        - IPP/item [POST]
+        - FORM-DATA(because of multipart-data/image):
+          - Please checkout the models/item-m.js file
+        - TOKEN NEEDED AS HEADER LIKE PREVIOUS ROUTES
+        - ROLE: admin or provider only
+    - --------------------------------------------------------------
+    - [2] Get Items
+        - IPP/item [GET]
+        - QUERY:
+          - sort: **CHECK MODEL AND YOU CAN SORT WITH THEM** eg: title
+          - _id: ITEM_ID (you can get single item like this)
+          - page: **FOR PAGINATION** eg: 1 (meaning page one)
+          - limit: **FOR PAGINATION** eg: 10 (10 per page)
+        - ROLE: ALL
+    - --------------------------------------------------------------
+    - [3] Delete Item
+        - IPP/item/delete-item [DELETE]
+        - QUERY:
+          - itemId: ID_FOR_THE_ITEM_TO_BE_DELETED
+        - TOKEN NEEDED AS HEADER LIKE PREVIOUS ROUTES
+        - ROLE: admin only
+    - --------------------------------------------------------------
+    - [4] Search Item
+        - IPP/item/search [GET]
+        - QUERY:
+          - search: audi **Searches in category, subcategory, title all at once**
+
+## This is fraustrating, so u should check the rest of the routes yourself
+## check header and check token and stuff for the routes
