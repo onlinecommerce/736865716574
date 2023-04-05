@@ -49,7 +49,7 @@ const userSchema = new mongoose.Schema({
       message: "Please enter a valid phone number",
     },
   },
-  address: String,
+  location: String,
   contacts: String,
   password: {
     type: String,

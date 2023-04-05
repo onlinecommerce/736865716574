@@ -33,6 +33,9 @@ let itemSchema = mongoose.Schema({
         type: String,
         default: true
     },
+    image: {
+        
+    }
 }, {
     toJSON: {
         virtuals: true
