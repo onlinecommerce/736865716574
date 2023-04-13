@@ -3,6 +3,14 @@ const catchAsync = require("./../utils/catchAsync");
 
 const bcrypt = require("bcryptjs");
 
+exports.getUser = (async (req, res, next) => {
+    let user = await User.findById({ _id: req.query.userId });
+    res.status(200).json({
+        status: 'success',
+        user
+    })
+})
+
 exports.searchUser = catchAsync(async (req, res, next) => {
     let user = await User.find({
         userName: {

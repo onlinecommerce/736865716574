@@ -13,8 +13,9 @@ router.patch('/update-password', authController.guard, userController.updatePass
 router.patch('/role', authController.guard, authMW.restrictTo(['admin']), userController.changeRole);
 router.delete('/delete', authController.guard, authMW.restrictTo(['admin']), userController.delUser);
 router.get('/search', userController.searchUser);
+router.get('/get-user', userController.getUser);
 router.get('/check-user-name', userController.checkUsername);
 
-router.get('/checktoken', authController.guard, authController.checkToken);
+router.get('/check-token', authController.guard, authController.checkToken);
 
 module.exports = router;

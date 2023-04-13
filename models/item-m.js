@@ -7,8 +7,9 @@ let itemSchema = mongoose.Schema({
     },
     subCategory: {
         type: String,
-        required: [true, "Item must have a category"]
+        required: [true, "Item must have a subcategory"]
     },
+    name: String,
     description: {
         type: String,
     },
@@ -30,12 +31,29 @@ let itemSchema = mongoose.Schema({
         required: [true, 'Providers Id is required ']
     },
     available: {
-        type: String,
+        type: Boolean,
         default: true
     },
-    image: {
-        
+    status: {
+        type: String,
+        enum: ["New", "Slightly-used", "Used"],
+        default: 'New'
+    },
+    type: {
+        type: String,
+        enum: ["Item", "Job", "CV"],
+        default: "Item"
     }
+    // image: {
+    //     public_id: {
+    //         type: String,
+    //         required: true
+    //     },
+    //     url: {
+    //         type: String,
+    //         required: true
+    //     }
+    // }
 }, {
     toJSON: {
         virtuals: true

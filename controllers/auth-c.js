@@ -21,7 +21,9 @@ const signToken = (id) => {
 exports.signUp = catchAsync(async (req, res, next) => {
   let data = req.body;
 
-  let exists = await User.findOne({ userName: data.userName.toLowerCase() })
+  let exists = await User.findOne({
+    userName: data.userName.toLowerCase()
+  })
   if (exists) {
     return res.status(401).json({
       status: 'failed',
