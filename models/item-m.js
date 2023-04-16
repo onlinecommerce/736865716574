@@ -9,7 +9,10 @@ let itemSchema = mongoose.Schema({
         type: String,
         required: [true, "Item must have a subcategory"]
     },
-    name: String,
+    name: {
+        type: String,
+        required: [true, "Item must have a name"]
+    },
     description: {
         type: String,
     },

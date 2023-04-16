@@ -17,7 +17,7 @@ exports.getItems = catchAsync(async (req, res, next) => {
     items = items.length > 0 ? items[0] : null;
   } else if(req.query.recommand) {
     let { category, subCategory, name } = req.query;
-    name = name.split(' ');
+    name = name ? name.split(' ') : '';
     let primary = name.length ? name[0] : '---';
     let secondary = name.length > 1 ? name[1] : '---';
     let both = primary + secondary;
