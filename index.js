@@ -24,9 +24,9 @@ const app = require('./app')
 // let port = process.env.PORT;
 let port = 3000;
 app.listen(port, () => {
-  /* console.log(`
+  console.log(`
 		▛▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▜
 		▌App is now running on port http://localhost:${port}   ▐
 		▙▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▟
-	`); */
+	`);
 })
