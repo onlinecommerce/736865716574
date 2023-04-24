@@ -126,7 +126,7 @@ exports.createItem = catchAsync(async (req, res, next) => {
   let name = JSON.parse(req.body.data).name || null;
 
   cloudinary.uploader.upload(req.file.path).then(function(data) {
-    let data = {
+    let _data = {
       subCategory,
       category,
       quantity,
@@ -139,7 +139,7 @@ exports.createItem = catchAsync(async (req, res, next) => {
       name,
       image: data
     }
-    let item = await Item.create(data);
+    let item = await Item.create(_data);
     res.status(200).json({
       status: 'success',
       item,
