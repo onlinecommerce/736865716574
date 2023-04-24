@@ -7,11 +7,6 @@ const compress = require('compression');
 const hpp = require('hpp');
 const globalErrorHandler = require('./controllers/errorController');
 const app = express()
-const User = require("./models/user-m");
-
-// var bodyParser = require('body-parser')
-// app.use(bodyParser.urlencoded({ extended: false }))
-// app.use(bodyParser.json())
 
 const cors = require('cors')
 
@@ -19,7 +14,7 @@ app.use(cors())
 
 app.use(express.json());
 
-app.enable("trust-proxy");
+/* app.enable("trust-proxy");
 app.use(helmet({ crossOriginEmbedderPolicy: false, originAgentCluster: true }));
 
 // limiter
@@ -64,7 +59,7 @@ app.use(
 )
 
 app.use(express.json({ limit: "10kb" }));
-app.use(express.urlencoded({ extended: true, limit: "10kb" }));
+app.use(express.urlencoded({ extended: true, limit: "10kb" })); */
 
 // authentication
 const userRouter = require('./routes/user-r');
