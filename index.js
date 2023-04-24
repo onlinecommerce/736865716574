@@ -1,6 +1,5 @@
-/* require('./config/database')()
+require('./config/database')()
 
-// const dotenv = require('dotenv')
 const item = require('./models/item-m.js');
 const Category = require('./models/category-m.js');
 
@@ -19,17 +18,15 @@ const Category = require('./models/category-m.js');
   }, 1000 * 60 * 60 * 6);
 })();
 
-// dotenv.config({ path: './config/config.env' }) */
-
 const app = require('./app')
 
 
 // let port = process.env.PORT;
 let port = 3000;
 app.listen(port, () => {
-  console.log(`
+  /* console.log(`
 		▛▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▜
 		▌App is now running on port http://localhost:${port}   ▐
 		▙▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▟
-	`);
+	`); */
 })
