@@ -1,0 +1,18 @@
+{"_id":{"$oid":"642ea2e55cbee12b49e4bb0d"},"category":"vehicles","subcategory":["cars","motorcycles","trucks","accessories","boats","other"]}
+{"_id":{"$oid":"642ea2e55cbee12b49e4bb0e"},"category":"property","subcategory":["rent","sale","lands for Sale","venues","other"]}
+{"_id":{"$oid":"642ea2e55cbee12b49e4bb0f"},"category":"mobile phones","subcategory":["mobile phones","accessories","smart watches","wablets","other"]}
+{"_id":{"$oid":"642ea2e55cbee12b49e4bb10"},"category":"electronics","subcategory":["accessories","computers","music","hardware","networking","video","photography","printers","security","software","game-consoles","other"]}
+{"_id":{"$oid":"642ea2e55cbee12b49e4bb11"},"category":"home appliances","subcategory":["furniture","garden","accessories","kitchen","kitchenware","chemicals","other"]}
+{"_id":{"$oid":"642ea2e55cbee12b49e4bb12"},"category":"health","subcategory":["vitamins","supplements","other"]}
+{"_id":{"$oid":"642ea2e55cbee12b49e4bb13"},"category":"beauty","subcategory":["bath","fragrance","hair","make-up","skincare","accessories","other"]}
+{"_id":{"$oid":"642ea2e55cbee12b49e4bb14"},"category":"fashion","subcategory":["bags","clothing","accessories","jewelery","shoes","watches","wedding","other"]}
+{"_id":{"$oid":"642ea2e55cbee12b49e4bb15"},"category":"art","subcategory":["arts","books","dvd","instruments","other"]}
+{"_id":{"$oid":"642ea2e55cbee12b49e4bb16"},"category":"sport","subcategory":["equipments","other"]}
+{"_id":{"$oid":"642ea2e55cbee12b49e4bb17"},"category":"work cv","subcategory":["accounting","advertising","entertainment","childcare","clerical","IT","construction","consulting","transportation","engineering","architecture","health","beauty","healthcare","housekeeping","hr","internship","legal","management","labour","research","restaurant","retail","telemarkting","security","teaching","technology","tourism","other"]}
+{"_id":{"$oid":"642ea2e55cbee12b49e4bb18"},"category":"services","subcategory":["automotive","building","cleaning","computer","entertainment","party","health","travel","classes","other"]}
+{"_id":{"$oid":"642ea2e55cbee12b49e4bb19"},"category":"jobs","subcategory":["accounting","advertising","entertainment","childcare","clerical","IT","construction","consulting","transportation","engineering","architecture","health","beauty","healthcare","housekeeping","hr","internship","legal","management","labour","research","restaurant","retail","telemarkting","security","teaching","technology","tourism","other"]}
+{"_id":{"$oid":"642ea2e55cbee12b49e4bb1a"},"category":"kids","subcategory":["accessories","clothing","furniture","safety","shoes","maternity","playground","toys"]}
+{"_id":{"$oid":"642ea2e55cbee12b49e4bb1b"},"category":"animals-pets","subcategory":["birds","cats","dogs","fish","accessories","other"]}
+{"_id":{"$oid":"642ea2e55cbee12b49e4bb1c"},"category":"agriculture","subcategory":["machinery","seeds","livestock","other"]}
+{"_id":{"$oid":"642ea2e55cbee12b49e4bb1d"},"category":"commercial-tools","subcategory":["industrial","manufacturing","medical","printing","safetywear","salon","stationary","store","other"]}
+{"_id":{"$oid":"642ea2e55cbee12b49e4bb1e"},"category":"repair","subcategory":["building","doors","electrical","plumbing","windows","other"]}

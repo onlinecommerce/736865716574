@@ -1,24 +1,4 @@
-/* exports.categories =  [
-  {
-    "category": "Ingredints",
-    "subcategory": [
-      "Pepper",
-      "Shiro",
-      "Salt"
-    ],
-  },
-  {
-    "category": "Fruits",
-    "subcategory": [
-      "Grape",
-      "Orange",
-      "Banana"
-    ],
-  }
-];
- */
-
-exports.categories = [
+[
   {
     "category": "vehicles",
     "subcategory": [
@@ -32,13 +12,7 @@ exports.categories = [
   },
   {
     "category": "property",
-    "subcategory": [
-      "rent",
-      "sale",
-      "lands for Sale",
-      "venues",
-      "other"
-    ]
+    "subcategory": ["rent", "sale", "lands for Sale", "venues", "other"]
   },
   {
     "category": "mobile phones",
@@ -81,11 +55,7 @@ exports.categories = [
   },
   {
     "category": "health",
-    "subcategory": [
-      "vitamins",
-      "supplements",
-      "other"
-    ]
+    "subcategory": ["vitamins", "supplements", "other"]
   },
   {
     "category": "beauty",
@@ -114,20 +84,11 @@ exports.categories = [
   },
   {
     "category": "art",
-    "subcategory": [
-      "arts",
-      "books",
-      "dvd",
-      "instruments",
-      "other"
-    ]
+    "subcategory": ["arts", "books", "dvd", "instruments", "other"]
   },
   {
     "category": "sport",
-    "subcategory": [
-      "equipments",
-      "other"
-    ]
+    "subcategory": ["equipments", "other"]
   },
   {
     "category": "work cv",
@@ -227,23 +188,11 @@ exports.categories = [
   },
   {
     "category": "animals-pets",
-    "subcategory": [
-      "birds",
-      "cats",
-      "dogs",
-      "fish",
-      "accessories",
-      "other"
-    ]
+    "subcategory": ["birds", "cats", "dogs", "fish", "accessories", "other"]
   },
   {
     "category": "agriculture",
-    "subcategory": [
-      "machinery",
-      "seeds",
-      "livestock",
-      "other"
-    ]
+    "subcategory": ["machinery", "seeds", "livestock", "other"]
   },
   {
     "category": "commercial-tools",

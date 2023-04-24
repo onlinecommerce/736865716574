@@ -3,7 +3,7 @@ const catchAsync = require("./../utils/catchAsync");
 
 const bcrypt = require("bcryptjs");
 
-exports.getUser = (async (req, res, next) => {
+exports.getUser = catchAsync(async (req, res, next) => {
     let user = await User.findById({ _id: req.query.userId });
     res.status(200).json({
         status: 'success',
@@ -12,12 +12,14 @@ exports.getUser = (async (req, res, next) => {
 })
 
 exports.searchUser = catchAsync(async (req, res, next) => {
+    let skip = req.query.skip || 0;
+    let limit = req.query.limit || 0;
     let user = await User.find({
         userName: {
             $regex: req.query.userName,
             $options: 'i'
         }
-    }).select("-id");
+    }).select("-id").sort("-created_at").skip(skip).limit(limit);
     res.status(200).json({
         status: 'success',
         user
@@ -55,8 +57,41 @@ exports.changeRole = catchAsync(async (req, res, next) => {
     })
 })
 
+exports.changeOrder = catchAsync(async (req, res, next) => {
+    let user_id = req.query.user_id;
+    let order = req.query.order;
+    let user = await User.updateOne({
+        _id: user_id
+    }, {
+        $set: {
+            order
+        }
+    });
+    res.status(200).json({
+        status: 'success',
+        data: user
+    })
+})
+
+exports.changeAdPosting = catchAsync(async (req, res, next) => {    
+    let user_id = req.query.user_id;
+    let postPerDay = +req.query.postPerDay;
+    let user = await User.updateOne({
+        _id: user_id
+    }, {
+        $set: {
+            postPerDay
+        }
+    });
+    res.status(200).json({
+        status: 'success',
+        data: user
+    })
+})
+
 exports.updateUser = catchAsync(async (req, res, next) => {
-    let {
+    console.log(req.body)
+    /* let {
         password
     } = req.query;
 
@@ -73,12 +108,13 @@ exports.updateUser = catchAsync(async (req, res, next) => {
             status: 'noAccount',
             message: 'Incorrect Password'
         })
-    }
+    } */
 
     let data = {
         fullName: req.body.fullName,
         phoneNumber: req.body.phoneNumber,
-        address: req.body.address,
+        location: req.body.location,
+        contacts: req.body.contacts
     }
 
     let user = await User.updateOne({

@@ -80,6 +80,10 @@ const userSchema = new mongoose.Schema({
     type: Number,
     default: 0
   },
+  postPerDay: {
+    type: Number,
+    default: 5
+  }
 }, {
   toJSON: {
     virtuals: true

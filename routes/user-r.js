@@ -11,6 +11,8 @@ router.post('/login', authController.logIn);
 router.patch('/update', authController.guard, userController.updateUser);
 router.patch('/update-password', authController.guard, userController.updatePassword);
 router.patch('/role', authController.guard, authMW.restrictTo(['admin']), userController.changeRole);
+router.patch('/order', authController.guard, authMW.restrictTo(['admin']), userController.changeOrder);
+router.patch('/ppd', authController.guard, authMW.restrictTo(['admin']), userController.changeAdPosting);
 router.delete('/delete', authController.guard, authMW.restrictTo(['admin']), userController.delUser);
 router.get('/search', userController.searchUser);
 router.get('/get-user', userController.getUser);
