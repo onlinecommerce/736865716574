@@ -11,7 +11,7 @@ const app = express()
 const cors = require('cors')
 
 // app.use(cors())
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     /* res.header("Access-Control-Allow-Origin", "*");
     res.header(
         "Access-Control-Allow-Methods",
@@ -21,21 +21,21 @@ app.use(function(req, res, next) {
         "Access-Control-Allow-Headers",
         "Origin, X-Requested-With, Content-Type, Accept, Authorization, x_authorization"
     ); */
-    const allowedOrigins = ['https://front-hazel-eta.vercel.app/', 'https://front-di0l.onrender.com/',];
-      const origin = req.headers.origin;
-      if (allowedOrigins.includes(origin)) {
-           res.setHeader('Access-Control-Allow-Origin', origin);
-      }
-      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-      res.header("Access-Control-Allow-credentials", true);
-      res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, UPDATE");
+    res.header("Access-Control-Allow-Origin", "*");
+    res.setHeader('Access-Control-Allow-Origin', "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, x_authorization");
+    res.header("Access-Control-Allow-credentials", true);
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, UPDATE");
     next()
 })
 
 app.use(express.json());
 
 app.enable("trust-proxy");
-app.use(helmet({ crossOriginEmbedderPolicy: false, originAgentCluster: true }));
+app.use(helmet({
+    crossOriginEmbedderPolicy: false,
+    originAgentCluster: true
+}));
 
 // limiter
 const limiter = rateLimit({
@@ -78,8 +78,13 @@ app.use(
     })
 )
 
-app.use(express.json({ limit: "10kb" }));
-app.use(express.urlencoded({ extended: true, limit: "10kb" }));
+app.use(express.json({
+    limit: "10kb"
+}));
+app.use(express.urlencoded({
+    extended: true,
+    limit: "10kb"
+}));
 
 // authentication
 const userRouter = require('./routes/user-r');
