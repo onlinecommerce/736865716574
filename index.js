@@ -24,8 +24,9 @@ dotenv.config({ path: './config/config.env' })
 const app = require('./app')
 
 
-let port = process.env.PORT;
-app.listen(process.env.PORT, () => {
+// let port = process.env.PORT;
+let port = 3000;
+app.listen(port, () => {
   console.log(`
 		▛▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▜
 		▌App is now running on port http://localhost:${port}   ▐
