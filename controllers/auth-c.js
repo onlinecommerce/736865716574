@@ -110,10 +110,10 @@ exports.checkToken = catchAsync(async (req, res, next) => {
 
   let token;
   if (
-    req.headers.x_authorization &&
-    req.headers.x_authorization.startsWith("Bearer ")
+    req.headers.Authorization &&
+    req.headers.Authorization.startsWith("Bearer ")
   ) {
-    token = req.headers.x_authorization.split(" ")[1];
+    token = req.headers.Authorization.split(" ")[1];
   }
 
   if (!token) {
@@ -132,21 +132,21 @@ exports.checkToken = catchAsync(async (req, res, next) => {
 });
 
 exports.guard = catchAsync(async (req, res, next) => {
-  if (!req.headers.x_authorization) {
+  if (!req.headers.Authorization) {
     return res.status(400).json({
       status: "failed",
       message: "No token was found"
     })
   }
-  const decodedToken = jwt.verify(req.headers.x_authorization.split(" ")[1], JWT_SECRET);
+  const decodedToken = jwt.verify(req.headers.Authorization.split(" ")[1], JWT_SECRET);
   req.query.id = decodedToken.id;
 
   let token;
   if (
-    req.headers.x_authorization &&
-    req.headers.x_authorization.startsWith("Bearer ")
+    req.headers.Authorization &&
+    req.headers.Authorization.startsWith("Bearer ")
   ) {
-    token = req.headers.x_authorization.split(" ")[1];
+    token = req.headers.Authorization.split(" ")[1];
   }
 
   if (!token) {
