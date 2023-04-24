@@ -50,7 +50,7 @@ exports.getItems = catchAsync(async (req, res, next) => {
         }
       }
       ],
-    },).populate("postedBy").select("id name price postedBy negotiable").limit(req.query.limit);
+    },).populate("postedBy").select("id name price postedBy negotiable image").limit(req.query.limit);
   } else {
     const feature = new ApiFeatures(
       Item.find().populate("postedBy").select({
@@ -59,7 +59,8 @@ exports.getItems = catchAsync(async (req, res, next) => {
         name: 1,
         price: 1,
         postedBy: 1,
-        negotiable: 1
+        negotiable: 1,
+        image: 1
       }), //.select("id name price postedBy"),
       req.query)
       .filter()

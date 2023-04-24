@@ -1,6 +1,6 @@
-require('./config/database')()
+/* require('./config/database')()
 
-const dotenv = require('dotenv')
+// const dotenv = require('dotenv')
 const item = require('./models/item-m.js');
 const Category = require('./models/category-m.js');
 
@@ -19,7 +19,7 @@ const Category = require('./models/category-m.js');
   }, 1000 * 60 * 60 * 6);
 })();
 
-dotenv.config({ path: './config/config.env' })
+// dotenv.config({ path: './config/config.env' }) */
 
 const app = require('./app')
 
