@@ -125,7 +125,7 @@ exports.createItem = catchAsync(async (req, res, next) => {
   let postedBy = JSON.parse(req.body.data).postedBy || req.query.id;
   let name = JSON.parse(req.body.data).name || null;
 
-  cloudinary.uploader.upload(req.file.path).then(function(data) {
+  cloudinary.uploader.upload(req.file.path).then(async function(data) {
     let _data = {
       subCategory,
       category,
