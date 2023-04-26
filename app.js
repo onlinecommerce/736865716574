@@ -10,18 +10,9 @@ const app = express()
 
 const cors = require('cors')
 
-// app.use(cors())
+app.use(cors())
 app.use(function (req, res, next) {
-    /* res.header("Access-Control-Allow-Origin", "*");
-    res.header(
-        "Access-Control-Allow-Methods",
-        "GET,HEAD,POST,PATCH,DELETE,PUST,OPTIONS"
-    );
-    res.header(
-        "Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content-Type, Accept, Authorization, Authorization"
-    ); */
-    const allowedOrigins = ['https://front-hazel-eta.vercel.app/', 'https://front-di0l.onrender.com/', ];
+    const allowedOrigins = ['https://front-hazel-eta.vercel.app/', 'https://front-di0l.onrender.com/', 'http://localhost:5173'];
     const origin = req.headers.origin;
     if (allowedOrigins.includes(origin)) {
         res.setHeader('Access-Control-Allow-Origin', origin);

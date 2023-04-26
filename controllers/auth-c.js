@@ -103,7 +103,7 @@ exports.logIn = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.checkToken = catchAsync(async (req, res, next) => {
+exports.checkToken = (async (req, res, next) => {
   let user = await User.findById({
     _id: req.query.id
   })
@@ -132,21 +132,22 @@ exports.checkToken = catchAsync(async (req, res, next) => {
 });
 
 exports.guard = catchAsync(async (req, res, next) => {
-  if (!req.headers.Authorization) {
+  if (!req.headers.authorization || req.headers.authorization.split(" ")[1].length < 6) {
     return res.status(400).json({
       status: "failed",
       message: "No token was found"
     })
   }
-  const decodedToken = jwt.verify(req.headers.Authorization.split(" ")[1], JWT_SECRET);
-  req.query.id = decodedToken.id;
 
+  const decodedToken = jwt.verify(req.headers.authorization.split(" ")[1], JWT_SECRET);
+  req.query.id = decodedToken.id;
+  
   let token;
   if (
-    req.headers.Authorization &&
-    req.headers.Authorization.startsWith("Bearer ")
+    req.headers.authorization &&
+    req.headers.authorization.startsWith("Bearer ")
   ) {
-    token = req.headers.Authorization.split(" ")[1];
+    token = req.headers.authorization.split(" ")[1];
   }
 
   if (!token) {
@@ -154,8 +155,5 @@ exports.guard = catchAsync(async (req, res, next) => {
       new AppError("You are not logged in! Please login to continue", 401)
     );
   }
-
-  let decoded = await promisify(jwt.verify)(token, JWT_SECRET);
-
   next();
 });
