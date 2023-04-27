@@ -135,7 +135,8 @@ exports.guard = catchAsync(async (req, res, next) => {
   if (!req.query.authorization || req.query.authorization.split(" ")[1].length < 6) {
     return res.status(400).json({
       status: "failed",
-      message: "No token was found"
+      message: "No token was found",
+      token: req.query.authorization
     })
   }
 
