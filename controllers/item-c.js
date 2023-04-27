@@ -104,7 +104,7 @@ exports.searchItems = catchAsync(async (req, res, next) => {
     .limit(Number(req.query.limit))
     .sort({
       updated_at: -1
-    }).select("id category subCategory name price status");
+    }).select("id category subCategory name price status postedBy");
 
   res.status(200).json({
     status: 'success',
