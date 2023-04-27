@@ -10,7 +10,7 @@ const app = express()
 
 const cors = require('cors')
 
-app.use(cors())
+// app.use(cors())
 app.use(function (req, res, next) {
     const allowedOrigins = ['https://front-hazel-eta.vercel.app/', 'https://front-di0l.onrender.com/', 'http://localhost:5173'];
     const origin = req.headers.origin;
