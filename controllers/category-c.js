@@ -1,16 +1,24 @@
 const ApiFeatures = require("../utils/APIFeatures");
 const catchAsync = require("./../utils/catchAsync");
 const Category = require("./../models/category-m");
+const Item = require("./../models/item-m");
 
 exports.getCategory = catchAsync(async (req, res, next) => {
   let category;
   if (req.query.distinct) {
-    category = await Category.find().distinct("category");
+    // category = await Category.find().distinct("category");
+    category = await Item.aggregate([{
+      $group: {
+        _id: '$category',
+        total: {
+          $sum: 1
+        }
+      }
+    }])
+    console.log(category)
     // let temp = await Category.countDocuments({category: category[0]});
   } else if (req.query.category && !req.query.subcategory) {
-    const feature = new ApiFeatures(Category.findOne(), req.query).filter();
-    category = await feature.query;
-    category = category[0].length ? category : category[0].subcategory;
+    category = await Item.aggregate([ { $match: { category: req.query.category } }, { $group: { _id: '$subCategory', total: { $sum: 1 } } }])
   } else {
     category = await Category.find().sort({
       order: 1,
