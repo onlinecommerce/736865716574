@@ -16,6 +16,8 @@ async function inits() {
 
 // inits();
 
+router.route('/posting').get(cateController.posting)
+
 router
   .route("/")
   .get(cateController.getCategory)

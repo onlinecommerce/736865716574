@@ -15,7 +15,6 @@ exports.getCategory = catchAsync(async (req, res, next) => {
         }
       }
     }])
-    console.log(category)
     // let temp = await Category.countDocuments({category: category[0]});
   } else if (req.query.category && !req.query.subcategory) {
     category = await Item.aggregate([ { $match: { category: req.query.category } }, { $group: { _id: '$subCategory', total: { $sum: 1 } } }])
@@ -30,6 +29,19 @@ exports.getCategory = catchAsync(async (req, res, next) => {
     data: category,
   });
 });
+
+exports.posting = catchAsync(async (req, res, next) => {
+  let category;
+  if (req.query.distinct) {
+    category = await Category.find().distinct("category");
+  } else {
+    category = await Category.findOne({ category: req.query.category });
+  }
+  res.status(200).json({
+    status: 'success',
+    data: category
+  })
+})
 
 exports.saveCategory = catchAsync(async (req, res, next) => {
   let category = await Category.create(req.body);
