@@ -9,13 +9,17 @@ exports.restrictTo = (roles) =>
       user = await User.findOne({
         _id: req.query.id
       });
+      if (!user) return res.status(403).json({
+        status: 'unauthorized',
+        message: "you are not authorized to do this"
+      })
     } catch (err) {
       return res.status(401).json({
         status: 'fail',
         message: 'User[name] doesn\'t exist'
       })
     }
-    if (!roles.includes(user.role)) {
+    if (user && !roles.includes(user.role)) {
       return res.status(403).json({
         status: 'unauthorized',
         message: "you are not authorized to do this"
@@ -54,7 +58,7 @@ exports.limitPost = async (req, res, next) => {
       $lte: dates[2]
     }
   })
-  
+
   if (n - posts.length || !posts.length) {
     req.query.postPerDay = posts.length + 1;
     next()
