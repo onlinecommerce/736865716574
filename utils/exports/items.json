@@ -6,7 +6,8 @@
     "price": 460,
     "quantity": 1,
     "postedBy": "641bee64fe4edb430988a856",
-    "available": "true"
+    "available": "true",
+    "status": "New"
   },
   {
     "category": "Fruits",
@@ -52,7 +53,8 @@
     "quantity": 1,
     "postedBy": "641ee125ec1652418c27892f",
     "available": "true",
-    "status": "New"
+    "status": "New",
+    "type": "Item"
   },
   {
     "category": "Packaged",
@@ -64,7 +66,8 @@
     "quantity": 1,
     "postedBy": "641ee125ec1652418c27892f",
     "available": "true",
-    "status": "New"
+    "status": "New",
+    "type": "Item"
   },
   {
     "category": "Packaged",
@@ -76,7 +79,8 @@
     "quantity": 1,
     "postedBy": "641ee125ec1652418c27892f",
     "available": "true",
-    "status": "New"
+    "status": "New",
+    "type": "Item"
   },
   {
     "category": "Electronics",
@@ -88,7 +92,8 @@
     "quantity": 1,
     "postedBy": "641ee125ec1652418c27892f",
     "available": "true",
-    "status": "New"
+    "status": "New",
+    "type": "Item"
   },
   {
     "category": "Electronics",
@@ -100,7 +105,8 @@
     "quantity": 1,
     "postedBy": "641ee125ec1652418c27892f",
     "available": "true",
-    "status": "New"
+    "status": "New",
+    "type": "Item"
   },
   {
     "category": "Vehicle",
@@ -112,7 +118,8 @@
     "quantity": 1,
     "postedBy": "641ee125ec1652418c27892f",
     "available": "true",
-    "status": "New"
+    "status": "New",
+    "type": "Item"
   },
   {
     "category": "Appliance",
@@ -124,7 +131,8 @@
     "quantity": 1,
     "postedBy": "641ee125ec1652418c27892f",
     "available": "true",
-    "status": "New"
+    "status": "New",
+    "type": "Item"
   },
   {
     "category": "fashion",

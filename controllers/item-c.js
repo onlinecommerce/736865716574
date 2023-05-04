@@ -5,6 +5,7 @@ const ApiFeatures = require('../utils/APIFeatures');
 const cloudinary = require('../utils/cloudinary');
 
 exports.getItems = catchAsync(async (req, res, next) => {
+  req.query = {...req.query, page: +req.query.page, limit: +req.query.limit}
   let items;
   let allItems = false;
   let nItems = await Item.countDocuments();
