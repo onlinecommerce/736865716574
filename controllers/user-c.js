@@ -4,7 +4,9 @@ const catchAsync = require("./../utils/catchAsync");
 const bcrypt = require("bcryptjs");
 
 exports.getUser = catchAsync(async (req, res, next) => {
-    let user = await User.findById({ _id: req.query.userId });
+    let user = await User.findById({
+        _id: req.query.userId
+    });
     res.status(200).json({
         status: 'success',
         user
@@ -73,7 +75,7 @@ exports.changeOrder = catchAsync(async (req, res, next) => {
     })
 })
 
-exports.changeAdPosting = catchAsync(async (req, res, next) => {    
+exports.changeAdPosting = catchAsync(async (req, res, next) => {
     let user_id = req.query.user_id;
     let postPerDay = +req.query.postPerDay;
     let user = await User.updateOne({
@@ -90,26 +92,6 @@ exports.changeAdPosting = catchAsync(async (req, res, next) => {
 })
 
 exports.updateUser = catchAsync(async (req, res, next) => {
-    console.log(req.body)
-    /* let {
-        password
-    } = req.query;
-
-    let usr = await User.findById({
-        _id: req.query.id
-    }).select("+password");
-
-    const correct = usr ?
-        await usr.correctPassword(password, usr.password) :
-        false;
-
-    if (!correct) {
-        return res.status(404).json({
-            status: 'noAccount',
-            message: 'Incorrect Password'
-        })
-    } */
-
     let data = {
         fullName: req.body.fullName,
         phoneNumber: req.body.phoneNumber,
