@@ -36,7 +36,7 @@ function getDates() {
   let day = now.getDate(),
     month = now.getMonth(),
     year = now.getFullYear();
-  now = new Date(`${month+1}-${day-2}-${year}`);
+  now = new Date(`${month + 1}-${day - 2}-${year}`);
 
   yesterday = new Date(Date.parse(now) - fullDayInMilliSeconds);
   tomorrow = new Date(Date.parse(now) + fullDayInMilliSeconds * 3);
