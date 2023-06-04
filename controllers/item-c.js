@@ -5,7 +5,7 @@ const ApiFeatures = require('../utils/APIFeatures');
 const cloudinary = require('../utils/cloudinary');
 
 exports.getItems = catchAsync(async (req, res, next) => {
-  req.query = {...req.query, page: +req.query.page, limit: +req.query.limit}
+  req.query = { ...req.query, page: +req.query.page, limit: +req.query.limit }
   let items;
   let allItems = false;
   let nItems = await Item.countDocuments();
@@ -116,8 +116,7 @@ exports.searchItems = catchAsync(async (req, res, next) => {
 })
 
 exports.createItem = catchAsync(async (req, res, next) => {
-  console.log(req.body.data);
-  
+  let parseData = typeof req.body === "string" ? JSON.parse(req.body.data) : req.body;
   let {
     subCategory,
     category,
@@ -127,9 +126,10 @@ exports.createItem = catchAsync(async (req, res, next) => {
     negotiable,
     description,
     status,
-  } = JSON.parse(req.body.data);
-  let postedBy = JSON.parse(req.body.data).postedBy || req.query.id;
-  let name = JSON.parse(req.body.data).name || null;
+  } = parseData;
+  let postedBy = parseData.postedBy || req.query.id;
+  let name = parseData.name || null;
+
 
   cloudinary.uploader.upload(req.file.path).then(async function(data) {
     let _data = {
