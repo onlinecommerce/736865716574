@@ -107,7 +107,7 @@ exports.searchItems = catchAsync(async (req, res, next) => {
     .limit(Number(req.query.limit))
     .sort({
       updated_at: -1
-    }).select("id category subCategory name price status postedBy image");
+    }).populate("postedBy").select("id category subCategory name price status postedBy image");
 
   res.status(200).json({
     status: 'success',
@@ -116,6 +116,8 @@ exports.searchItems = catchAsync(async (req, res, next) => {
 })
 
 exports.createItem = catchAsync(async (req, res, next) => {
+  console.log(req.body.data);
+  
   let {
     subCategory,
     category,
