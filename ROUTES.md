@@ -54,6 +54,19 @@
         - QUERY:
           - userName: user_name
         - ROLE: ALL
+	- --------------------------------------------------------------
+    - [8] add saved Item
+        - IPP/user/saved [POST]
+        - QUERY:
+          - authorization
+		  - itemId
+        - ROLE: USER
+	- --------------------------------------------------------------
+    - [9] add saved Item
+        - IPP/user/saved [GET]
+        - QUERY:
+          - authorization
+        - ROLE: USER
 
 ### **Item Routes**
     - [1] Create Item

@@ -142,6 +142,7 @@ exports.guard = catchAsync(async (req, res, next) => {
 
   const decodedToken = jwt.verify(req.query.authorization.split(" ")[1], JWT_SECRET);
   req.query.id = decodedToken.id;
+  req.user = decodedToken.id;
 
   
   let token;
