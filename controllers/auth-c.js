@@ -1,40 +1,38 @@
 const jwt = require("jsonwebtoken");
-const {
-  promisify
-} = require("util");
+const { promisify } = require("util");
 const User = require("./../models/user-m");
 const catchAsync = require("./../utils/catchAsync");
 const AppError = require("./../utils/appError");
 
-
 const JWT_SECRET = "thi$.i$_a-j3t_$ecr3T%dum6a$$s3c73t%m0yn%fu9k_u_hack3r$";
-const JWT_EXPIRES_IN = "72000h"
+const JWT_EXPIRES_IN = "72000h";
 
 const signToken = (id) => {
-  return jwt.sign({
-    id
-  }, JWT_SECRET, {
-    expiresIn: JWT_EXPIRES_IN,
-  });
+  return jwt.sign(
+    {
+      id,
+    },
+    JWT_SECRET,
+    {
+      expiresIn: JWT_EXPIRES_IN,
+    }
+  );
 };
 
 exports.signUp = catchAsync(async (req, res, next) => {
   let data = req.body;
 
   let exists = await User.findOne({
-    userName: data.userName.toLowerCase()
-  })
+    userName: data.userName.toLowerCase(),
+  });
   if (exists) {
     return res.status(401).json({
-      status: 'failed',
-      message: 'username already taken'
-    })
+      status: "failed",
+      message: "username already taken",
+    });
   }
 
-  let {
-    password,
-    passwordConfirm
-  } = data;
+  let { password, passwordConfirm } = data;
 
   let userName = data.userName ? data.userName.toLowerCase() : data.userName;
   const newUser = await User.create({
@@ -44,10 +42,8 @@ exports.signUp = catchAsync(async (req, res, next) => {
     password,
     passwordConfirm,
     location: data.location,
-    contacts: data.contacts
+    contacts: data.contacts,
   });
-
-
 
   let token = signToken(newUser._id);
 
@@ -59,23 +55,18 @@ exports.signUp = catchAsync(async (req, res, next) => {
 });
 
 exports.logIn = catchAsync(async (req, res, next) => {
-  let {
-    userName,
-    password
-  } = req.query;
+  let { userName, password } = req.query;
 
   if (!userName || !password) {
     return res.status(404).json({
-      status: 'nullField',
-      message: 'Please fill in all fields'
-    })
+      status: "nullField",
+      message: "Please fill in all fields",
+    });
   }
 
   const user = await User.findOne({
-    userName: userName.toLowerCase()
-  }).select(
-    "+password"
-  );
+    userName: userName.toLowerCase(),
+  }).select("+password +saved");
 
   /* if (user && user.banned) {
     return res.status(401).json({
@@ -84,15 +75,15 @@ exports.logIn = catchAsync(async (req, res, next) => {
     })
   } */
 
-  const correct = user ?
-    await user.correctPassword(password, user.password) :
-    false;
+  const correct = user
+    ? await user.correctPassword(password, user.password)
+    : false;
 
   if (!user || !correct) {
     return res.status(404).json({
-      status: 'noAccount',
-      message: 'Incorrect Username or Password'
-    })
+      status: "noAccount",
+      message: "Incorrect Username or Password",
+    });
   }
 
   const token = signToken(user._id);
@@ -105,8 +96,8 @@ exports.logIn = catchAsync(async (req, res, next) => {
 
 exports.checkToken = catchAsync(async (req, res, next) => {
   let user = await User.findById({
-    _id: req.query.id
-  })
+    _id: req.query.id,
+  }).select("+saved");
 
   let token;
   if (
@@ -125,26 +116,31 @@ exports.checkToken = catchAsync(async (req, res, next) => {
   let decoded = await promisify(jwt.verify)(token, JWT_SECRET);
 
   res.status(200).json({
-    status: 'success',
+    status: "success",
     decoded,
-    user
-  })
+    user,
+  });
 });
 
 exports.guard = catchAsync(async (req, res, next) => {
-  if (!req.query.authorization || req.query.authorization.split(" ")[1].length < 6) {
+  if (
+    !req.query.authorization ||
+    req.query.authorization.split(" ")[1].length < 6
+  ) {
     return res.status(400).json({
       status: "failed",
       message: "No token was found",
-      token: req.query.authorization
-    })
+      token: req.query.authorization,
+    });
   }
 
-  const decodedToken = jwt.verify(req.query.authorization.split(" ")[1], JWT_SECRET);
+  const decodedToken = jwt.verify(
+    req.query.authorization.split(" ")[1],
+    JWT_SECRET
+  );
   req.query.id = decodedToken.id;
   req.user = decodedToken.id;
 
-  
   let token;
   if (
     req.query.authorization &&

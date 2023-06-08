@@ -191,11 +191,27 @@ exports.addSaved = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.getSaved = catchAsync(async (req, res, next) => {
-	let savedItem = await User.findById(req.user,{saved:1}).populate("saved");
-  
-	res.status(200).json({
-	  status: "success",
-	  data: savedItem.saved,
-	});
+exports.removeSaved = catchAsync(async (req, res, next) => {
+  await User.findByIdAndUpdate(req.user, {
+    $pull: {
+      saved: req.query.itemId,
+    },
   });
+
+  res.status(201).json({
+    status: "success",
+    data: true,
+  });
+});
+
+exports.getSaved = catchAsync(async (req, res, next) => {
+  let savedItem = await User.findById(req.user, { saved: 1 }).populate({
+    path: "saved",
+    populate: { path: "postedBy", model: "User" },
+  });
+
+  res.status(200).json({
+    status: "success",
+    data: savedItem.saved,
+  });
+});

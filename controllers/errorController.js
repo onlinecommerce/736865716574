@@ -71,7 +71,7 @@ module.exports = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500;
   err.status = err.status || "Error";
   err.customMessage = JSON.stringify(err.customMessage) || false;
-//   process.env.NODE_ENV = "DEVELOPMENT";
+  //   process.env.NODE_ENV = "DEVELOPMENT";
   if (process.env.NODE_ENV === "DEVELOPMENT") {
     sendErrorDev(err, req, res);
   } else {

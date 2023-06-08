@@ -8,8 +8,11 @@ const router = express.Router();
 router.post("/signup", authController.signUp);
 router.post("/login", authController.logIn);
 
-router.get("/saved", authController.guard, userController.getSaved);
-router.post("/saved", authController.guard, userController.addSaved);
+router
+  .route("/saved")
+  .get(authController.guard, userController.getSaved)
+  .post(authController.guard, userController.addSaved)
+  .delete(authController.guard, userController.removeSaved);
 
 router.patch("/update", authController.guard, userController.updateUser);
 router.patch(

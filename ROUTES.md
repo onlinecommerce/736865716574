@@ -62,7 +62,14 @@
 		  - itemId
         - ROLE: USER
 	- --------------------------------------------------------------
-    - [9] add saved Item
+	- [9] add saved Item
+        - IPP/user/saved [DELETE]
+        - QUERY:
+          - authorization
+		  - itemId
+        - ROLE: USER
+	- --------------------------------------------------------------
+    - [10] add saved Item
         - IPP/user/saved [GET]
         - QUERY:
           - authorization

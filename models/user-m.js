@@ -85,12 +85,15 @@ const userSchema = new mongoose.Schema(
       type: Number,
       default: 5,
     },
-    saved: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Item",
-      },
-    ],
+    saved: {
+      type: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Item",
+        },
+      ],
+      select: false,
+    },
   },
   {
     toJSON: {
